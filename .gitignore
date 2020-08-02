@@ -1,5 +1,8 @@
 env
+./.env
 .idea
-/src/db.sqlite3
 **/__pycache__
 /src/blog/migrations/
+files/
+/src/blogpy/admin/
+/src/blogpy/ckeditor/
