@@ -6,3 +6,4 @@ env
 files/
 /src/blogpy/admin/
 /src/blogpy/ckeditor/
+/src/staticfiles/
