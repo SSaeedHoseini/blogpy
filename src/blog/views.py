@@ -6,6 +6,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 
+from .serializers import *
 
 class IndexPage(TemplateView):
 
@@ -65,3 +66,15 @@ class AllArticleAPIView(APIView):
 
         except:
             return Response(data={'message': 'soneting wrong!'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+
+class SingleArticleAPIView(APIView):
+
+    def get(self, request):
+        try:
+            article_title = request.GET['article_title']
+            article = Article.objects.filter(title__contains=article_title)
+            serializer_data = SingleArticleSerializer(article, many=True)
+            return Response({'data': serializer_data.data}, status=status.HTTP_200_OK)
+        except Exception as exc:
+            return Response({'message': exc}, status= status.HTTP_500_INTERNAL_SERVER_ERROR)
