@@ -19,7 +19,8 @@ class Article(models.Model):
     content = RichTextField()
     created_at = models.DateTimeField(auto_now_add=True, blank=False)
     category = models.ForeignKey('Category', on_delete=models.CASCADE)
-    auther = models.OneToOneField(UserProfile, on_delete=models.CASCADE)
+    auther = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
+    promote = models.BooleanField(default=False, blank=True, null=True)
 
     def __str__(self):
         return self.title
